@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  financial-server:
+    build:
+      context: .
+    image: financial-server
+    container_name: financial-api
+    volumes:
+      - ${FINANCIAL_DEPLOY_PATH}:/financial/api
+    ports:
+      - "5005:5005"
+      - "8080:8080"
+    env_file:
+      - .env
+  financial-client:
+    build: .
+    command: npm run serve
+    volumes:
+      - '.:/app'
+    ports:
+      - '8080:3000'
