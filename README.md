@@ -1,6 +1,6 @@
 # Financial App
 
-Uma aplicação de transferência financeira, construída uma REST API com Spring Boot e um client em Vue JS.
+Uma aplicação de agendamento de transferência financeira, construída uma REST API com Spring Boot e um client em Vue JS.
 
 ## Tecnologias usadas
 
