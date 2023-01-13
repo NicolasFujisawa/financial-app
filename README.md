@@ -5,7 +5,7 @@ Uma aplicação de agendamento de transferência financeira, construída uma RES
 ## Tecnologias usadas
 
 - Java 11
-- Spring Boot 3.0.1
+- Spring Boot
 - H2 Database
 - Vue
 - Docker
@@ -18,14 +18,46 @@ Uma aplicação de agendamento de transferência financeira, construída uma RES
 
 ## Como subir a aplicação
 
-Caso tenha nmake ou make:
+Para subir o server:
 
-`make build`
+`cd server`
 
-`make up`
+`./mvnw spring-boot:run`
 
-Caso não tenha nmake ou make:
+E acesse em http://localhost:8080
 
-`docker compose build`
+## API's disponíveis
 
-`docker compose up`
+### Criar usuário
+POST - http://localhost:8080/users
+```json
+{
+  "name": "nicolas",
+  "email": "nicolas@email"
+}
+```
+
+### Buscar usuário
+GET - http://localhost:8080/users/{id}
+
+### Agendar uma transferência
+POST - http://localhost:8080/transfers
+
+payerId: id do usuário pagador
+payeeId: id do usuário destinatário
+amount: quantia enviada
+scheduledDate: data do agendamento
+transferDate: data para o pagamento
+
+```json
+{
+  "payerId": 2,
+  "payeeId": 1,
+  "amount": 10000,
+  "scheduledDate": "2023-01-12T11:00:00.000",
+  "transferDate": "2023-01-22T11:00:00.000"
+}
+```
+
+### Buscar transferências de um usuário
+GET - http://localhost:8080/users/{id}/bankStatement
